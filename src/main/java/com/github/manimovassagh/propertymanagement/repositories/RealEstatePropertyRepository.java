@@ -1,6 +1,6 @@
-package com.github.manimovassagh.propertymanagement.property;
+package com.github.manimovassagh.propertymanagement.repositories;
 
-import org.hibernate.mapping.Property;
+import com.github.manimovassagh.propertymanagement.models.RealEstateProperty;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

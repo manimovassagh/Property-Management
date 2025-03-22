@@ -1,4 +1,4 @@
-package com.github.manimovassagh.propertymanagement.property;
+package com.github.manimovassagh.propertymanagement.services;
 
 
 import org.springframework.stereotype.Service;

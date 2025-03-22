@@ -1,4 +1,4 @@
-package com.github.manimovassagh.propertymanagement.models;
+package com.github.manimovassagh.propertymanagement.property;
 
 import java.util.UUID;
 

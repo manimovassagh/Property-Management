@@ -1,8 +1,10 @@
-package com.github.manimovassagh.propertymanagement.property;
+package com.github.manimovassagh.propertymanagement.controllers;
 
 
 import java.util.UUID;
 
+import com.github.manimovassagh.propertymanagement.models.RealEstateAddress;
+import com.github.manimovassagh.propertymanagement.models.RealEstateProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
