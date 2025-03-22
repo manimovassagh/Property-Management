@@ -1,8 +1,12 @@
 package com.github.manimovassagh.propertymanagement.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +21,6 @@ import lombok.Setter;
 @Entity
 public class RealEstateProperty {
 
-    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -30,6 +33,11 @@ public class RealEstateProperty {
 
     private double price;
 
+    // Updated to use a type-safe Photo embeddable
+    @ElementCollection
+    @CollectionTable(name = "property_photos", joinColumns = @JoinColumn(name = "property_id"))
+    private List<Photo> photos = new ArrayList<>();
+
     // Constructors
     public RealEstateProperty() {
     }
@@ -39,6 +47,19 @@ public class RealEstateProperty {
         this.name = name;
         this.address = address;
         this.price = price;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    // Add a helper method to add a photo by URL
+    public void addPhoto(String photoUrl) {
+        this.photos.add(new Photo(photoUrl));
     }
 
 }

@@ -1,33 +1,26 @@
 package com.github.manimovassagh.propertymanagement.controllers;
 
-
-import java.util.UUID;
-
-import com.github.manimovassagh.propertymanagement.models.RealEstateAddress;
-import com.github.manimovassagh.propertymanagement.models.RealEstateProperty;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.manimovassagh.propertymanagement.dto.RealEstatePropertyRequestDTO;
+import com.github.manimovassagh.propertymanagement.models.RealEstateProperty;
+import com.github.manimovassagh.propertymanagement.repositories.RealEstatePropertyRepository;
+
 @RestController
-@RequestMapping("/api/v1/property")
+@RequestMapping("/api/properties")
 public class RealEstatePropertyController {
 
-  @GetMapping
-  public ResponseEntity<RealEstateProperty> getProperty() {
-    RealEstateProperty property = new RealEstateProperty();
-    property.setName("Mani property");
-    property.setId(UUID.randomUUID());
-    RealEstateAddress address = new RealEstateAddress();
-    address.setCity("Berlin");
-    address.setId(UUID.randomUUID());
-    address.setHouseNumber("12");
-    address.setPostalCode("12345");
-    address.setStreet("Main Street");
-    property.setAddress(address);
-    property.setPrice(250000.00);
-
-    return ResponseEntity.ok(property);
-  }
+    @Autowired
+    private RealEstatePropertyRepository repository;
+    
+    @PostMapping
+    public RealEstateProperty createProperty(@RequestBody RealEstatePropertyRequestDTO dto) {
+        RealEstateProperty property = new RealEstateProperty();
+        
+        return repository.save(property);
+    }
 }
