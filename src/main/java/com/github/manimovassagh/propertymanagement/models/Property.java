@@ -1,4 +1,4 @@
 package com.github.manimovassagh.propertymanagement.models;
 
-public class Photo {
+public class Property {
 }
