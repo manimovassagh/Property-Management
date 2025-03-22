@@ -1,30 +1,35 @@
 package com.github.manimovassagh.propertymanagement.property;
 
-
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.UUID;
 
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
-public class RealEstateProperty { // Renamed from Property to RealEstateProperty
+public class RealEstateProperty {
 
-    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String name;
-    private String address;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private RealEstateAddress address;
+
     private double price;
 
     // Constructors
     public RealEstateProperty() {
     }
 
-    public RealEstateProperty(UUID id, String name, String address, double price) {
+    public RealEstateProperty(UUID id, String name, RealEstateAddress address, double price) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -48,11 +53,11 @@ public class RealEstateProperty { // Renamed from Property to RealEstateProperty
         this.name = name;
     }
 
-    public String getAddress() {
+    public RealEstateAddress getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(RealEstateAddress address) {
         this.address = address;
     }
 
