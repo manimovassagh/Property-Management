@@ -2,6 +2,8 @@ package com.github.manimovassagh.propertymanagement.property;
 
 import java.util.UUID;
 
+import com.github.manimovassagh.propertymanagement.models.RealEstateAddress;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
