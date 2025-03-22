@@ -17,6 +17,8 @@ public class RealEstatePropertyController {
     RealEstateProperty property = new RealEstateProperty();
     property.setName("Mani property");
     property.setId(UUID.randomUUID());
+    property.setAddress("123 Main Street, Springfield");
+    property.setPrice(250000.00);
 
     return ResponseEntity.ok(property);
   }
